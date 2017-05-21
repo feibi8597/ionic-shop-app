@@ -1,0 +1,23 @@
+<ion-view view-title="登录" cache-view="false">
+  <ion-nav-bar class="bar-light" align-title="center">
+  </ion-nav-bar>
+  <ion-content>
+    <div class="list padding">
+      <form class="" role="form" id="signin_form" name="signin_form">
+        <label class="item_input">
+          <input type="tel" placeholder="手机号" ng-model="data.username" required>
+        </label>
+        <label class="item_input">
+          <input type="password" placeholder="密码" ng-model="data.password" required>
+        </label>
+        <button class="button button-block button-assertive button_input" ng-click="login()" ng-disabled="signin_form.$invalid">
+          立即登录
+        </button>
+        <div class="row">
+          <div class="col col-33 grey">没有账号?</div>
+          <div class="col col-25 assertive alink" ui-sref="register">立即注册</div>
+        </div>
+      </form>
+    </div>
+  </ion-content>
+</ion-view>

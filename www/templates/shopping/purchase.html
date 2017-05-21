@@ -1,0 +1,57 @@
+<ion-view view-title="购买宝贝" cache-view="false">
+  <ion-nav-bar class="bar-light" align-title="center">
+    <ion-nav-buttons side="left">
+      <a ng-click="$ionicGoBack()" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+    <ion-content>
+        <ion-list>
+            <ion-item class="item item-thumbnail-left o-p-item" type="item-text-wrap" ng-repeat="product in productList" style="border-top: none;">
+                <img ng-src="{{product.image[0]}}">
+                <div class="product-name">{{product.name}}</div>
+                <div class="product-price">{{ product.sellPrice | currency:"￥"}}</div>
+                <div style="margin-top:4px;" class="product-num">数量 X {{product.num}}</span></div>
+            </ion-item>
+            <div class="divider"></div>
+            <ion-item class="item-icon-right" type="item-text-wrap" ng-click="routeURL()" style="border-top: none;">
+                <span class="grey-8c" style="line-height: 40px;">收货地址</span>
+              <div class="item-note">
+                <div ng-if="receiver">收件人 {{receiver.name}}</div>
+                <div ng-if="!receiver" style="line-height: 40px">无地址</div>
+                <div>{{receiver.address || ''}}</div>
+              </div>
+              <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+            <ion-item class="item" type="item-text-wrap">
+                <span class="grey-8c">运费</span>
+                <span class="item-note">{{0 | currency:"￥"}}</span>
+            </ion-item>
+            <ion-item class="item" type="item-text-wrap" ng-if="productList.length == 1">
+                <span class="grey-8c">购买数量</span>
+                <span class="item-note">
+                    <div class="p-num-area">
+                      <button class="button-icon p-num-minus" ng-click="minus(productList[0])"><i class="ion-minus"></i></button>
+                      <input type="number" value="{{productList[0].num}}" class="p-num-input">
+                      <button class="button-icon p-num-plus" ng-click="plus(productList[0])"><i class="ion-plus"></i></button>
+                    </div>
+                </span>
+            </ion-item>
+            <ion-item class="item" type="item-text-wrap">
+                <span class="grey-8c">商品金额</span>
+                <span class="item-note">{{productsSum | currency:"￥"}}</span>
+            </ion-item>
+            <div class="divider-1"></div>
+            <!--<div class="divider"></div>-->
+            <!--<ion-checkbox  class="item-checkbox-right">-->
+                <!--优惠券<br>{{999 | currency:"￥"}}-->
+            <!--</ion-checkbox>-->
+        </ion-list>
+    </ion-content>
+    <ion-footer-bar class="unpadding">
+        <div class="col-offset-25 col-center">合计 <span class="orange-fa">{{productsSum | currency:"￥"}}</span></div>
+        <div class="col assertive-bg light col-offset-10">
+            <div ng-click="createOrder()" style="line-height: 35px;">提交订单</div>
+
+        </div>
+    </ion-footer-bar>
+</ion-view>

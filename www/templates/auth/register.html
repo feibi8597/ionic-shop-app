@@ -1,0 +1,33 @@
+<ion-view view-title="注册" cache-view="false">
+  <ion-nav-bar class="bar-light" align-title="center">
+    <ion-nav-buttons side="left">
+      <a ng-click="$ionicGoBack()" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <div class="list padding">
+      <form role="form" id="signup_form" name="signup_form">
+        <label class="item_input">
+          <input type="tel" placeholder="手机号" name="userMobile" ng-model="data.reg.userMobile.value" ng-pattern="/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/" ng-blur="validate('phone', signup_form)" required>
+        </label>
+        <label class="item_input">
+          <input type="email" placeholder="邮箱" name="userMail" ng-model="data.reg.userMail.value" ng-pattern="/\S+@\S+\.\S+/" ng-blur="validate('mail', signup_form)">
+        </label>
+        <label class="item_input">
+          <input type="number" placeholder="销售代码" name="salesCode" ng-model="data.reg.salesCode.value" ng-pattern="/^\d{6}$/" ng-blur="validate('salesCode', signup_form)" required>
+        </label>
+        <label class="item_input ">
+          <input type="password" placeholder="设置密码" name="password" ng-model="data.reg.password.value" ng-pattern="/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z\x21-\x7e]{8,16}$/" ng-blur="validate('password', signup_form)" required>
+        </label>
+        <!--<div class="alert-text">* 至少8位字符，至少包含数字、字母或特殊字符!</div>-->
+        <label class="item_input">
+          <input type="password" placeholder="确认密码" name="repeatpw" ng-model="repeatpw" ng-blur="validate('repeatpw', signup_form)" repeat="password" required>
+        </label>
+        <ion-checkbox ng-model="agree" class="checkbox-assertive checkbox-square prot-checkbox"></ion-checkbox><span ng-click="openProtModal()" class="alink_prot">同意用户协议</span>
+        <button class="button button-block button-assertive button_input" ng-click="next()" ui-sref="completeBasicInfo" ng-disabled="signup_form.$invalid || !agree">
+          下一步
+        </button>
+      </form>
+    </div>
+  </ion-content>
+</ion-view>

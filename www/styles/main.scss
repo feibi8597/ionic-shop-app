@@ -1,0 +1,96 @@
+body {
+  font-family: "PingFang SC";
+  font-size: 14px;
+}
+img {
+  width: 100%;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+.col {
+  text-align: center;
+}
+.col-55 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 55%;
+  -moz-box-flex: 0;
+  -moz-flex: 0 0 55%;
+  -ms-flex: 0 0 55%;
+  flex: 0 0 55%;
+  max-width: 55%;
+}
+.col-30 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 30%;
+  -moz-box-flex: 0;
+  -moz-flex: 0 0 30%;
+  -ms-flex: 0 0 30%;
+  flex: 0 0 30%;
+  max-width: 30%;
+}
+.padding-3{
+  padding: 3px;
+}
+.unpadding {
+  padding: 0 !important;
+}
+.unborder {
+  border: none !important;
+}
+.margin-t {
+  margin-top: 10px !important;
+}
+.product-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 10px;
+}
+.logistics-wrapper {
+  height: 70px;
+  border-top: 1px solid #f9f9f9;
+  overflow: hidden;
+}
+.product-sec {
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+
+}
+.item-shop {
+  padding: 0 16px !important;
+
+}
+.margin-center{
+  margin: 0 auto;
+}
+.photo-wrapper {
+  border: 1px solid #e7e7e7;
+  background-color: #f8f8f8;
+  border-radius: 4px;
+  height: 90px;
+  text-align: center;
+  color: #bdbdbd;
+  margin-top: 10px;
+  div {
+    margin-top: 35px;
+  }
+  img {
+    height: 100%;
+  }
+}
+.license-sec {
+  padding-bottom: 22px;
+}
+.header-register {
+  font-size: 14px;
+  color: #4a4a4a;
+  border:none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.plus-button {
+  display: block;
+  margin-top: 10px;
+  color: #8c8c8c;
+}

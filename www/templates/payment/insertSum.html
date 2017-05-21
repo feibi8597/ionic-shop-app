@@ -1,0 +1,26 @@
+<ion-view view-title="扫码付款" cache-view="false">
+  <ion-nav-bar class="bar-light" align-title="center">
+    <ion-nav-buttons side="left">
+      <a ng-click="$ionicGoBack()" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <div class="item-receiver">收款人：{{seller_msg.name}}</div>
+      <label class="item item-input input-sum">
+        <span class="input-label font-16">收款金额</span>
+        <input type="number" placeholder="输入收款金额" ng-model="data.amount">
+      </label>
+      <ion-checkbox ng-model="payway.weixin" class="item-icon-left item-checkbox-right" style="border-top: 1px solid #f7f7f7;margin: 0 15px;" ng-change="payway.alipay = false; ">
+        <span class="icon icon_wechat"></span>
+        <span style="margin-left: 30px;">微信</span>
+      </ion-checkbox>
+      <ion-checkbox ng-model="payway.alipay" class="item-icon-left item-checkbox-right" style="border-top: 1px solid #f7f7f7;margin: 0 15px;" ng-change="payway.weixin = false;">
+        <span class="icon icon_alipay"></span>
+        <span style="margin-left: 30px;">支付宝</span>
+      </ion-checkbox>
+    <div class="padding">
+      <button class="button button-block button-assertive button_input" ng-click="scanCode()" ng-disabled = "!data.amount || (!payway.weixin && !payway.alipay)"
+      >确定</button>
+    </div>
+  </ion-content>
+</ion-view>

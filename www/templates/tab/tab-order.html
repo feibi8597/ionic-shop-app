@@ -1,0 +1,171 @@
+<ion-view title="我的订单">
+  <ion-nav-bar class="bar-light" align-title="center">
+  </ion-nav-bar>
+  <ion-tabs class="tabs-striped tabs-top tabs-custom">
+    <ion-tab title="全部">
+      <ion-view>
+        <ion-content class="light-bg" style="margin-bottom: 38px;">
+          <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+          <div class="icon no_order" ng-if="orderList.length == 0"></div>
+          <ion-list ng-if="orderList.length != 0">
+            <div class="order-item" ng-repeat="order in orderList">
+              <ion-item class="item unborder">
+                <div class="item-note font-12 orange-fa">
+                  <span ng-if="order.state == 1">{{state.canceled}}</span>
+                  <span ng-if="order.state == 3 || order.state == 2">{{state.unpayed}}</span>
+                  <span ng-if="order.state == 5 || order.state == 4">{{state.payed}}</span>
+                  <span ng-if="order.state == 6">{{state.delivered}}</span>
+                  <span ng-if="order.state == 7">{{state.succeed}}</span>
+                </div>
+              </ion-item>
+              <ion-item class="item item-thumbnail-left order-divider" ng-repeat="product in order.productList" ui-sref="orederdetail({orderId: order.id})">
+                <img ng-src="{{product.image[0]}}">
+                <div class="row">
+                  <div class="col col-center">
+                    <div class="o-p-name">{{product.productName}}</div>
+                  </div>
+                  <div class="col col-offset-10 col-center">
+                    <div class="font-14 black-30">{{product.productSellPrice | currency:"￥"}}</div>
+                    <p class="o-p-num">数量 X {{product.productNum}}</p>
+                  </div>
+                </div>
+              </ion-item>
+              <ion-item class="item">
+                <div class="order-detail">共{{order.amount}}件商品 合计<span class="black-30">{{order.price| currency:"￥"}}</span></div>
+              </ion-item>
+              <ion-item>
+                <div class="item-note">
+                  <a class="button-grey" ng-click="cancelOrder(order.id)" ng-if="order.state != 7 && order.state != 6 && order.state != 1">取消订单</a>
+                  <a class="button-grey" ng-click="viewLogistics(order.id)" ng-if="order.state == 6">查看物流</a>
+                  <a class="button-orange" ng-click="payway(order.id)" ng-if="order.state == 3">付款</a>
+                  <a class="button-orange" ng-click="confirmOrder(order.id)" ng-if="order.state == 6">确认收货</a>
+                </div>
+              </ion-item>
+              <div class="divider"></div>
+            </div>
+          </ion-list>
+        </ion-content>
+      </ion-view>
+    </ion-tab>
+    <ion-tab title="待发货">
+      <ion-view>
+        <ion-content class="light-bg" style="margin-bottom: 38px">
+          <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+          <div class="icon no_order" ng-if="undeliveredOrder.length == 0"></div>
+          <ion-list ng-if="undeliveredOrder.length != 0">
+            <div class="order-item" ng-repeat="order in undeliveredOrder">
+              <ion-item class="item unborder">
+                <div class="item-note font-12 orange-fa">
+                  <span ng-if="order.state == 3 || order.state == 2">{{state.unpayed}}</span>
+                </div>
+              </ion-item>
+              <ion-item class="item order-divider item-thumbnail-left" ng-repeat="product in order.productList" ui-sref="orederdetail({orderId: order.id})">
+                <img ng-src="{{product.image[0]}}">
+                <div class="row">
+                  <div class="col col-center">
+                    <div class="o-p-name">{{product.productName}}</div>
+                  </div>
+                  <div class="col col-offset-10 col-center">
+                    <div class="font-14 black-30">{{product.productSellPrice | currency:"￥"}}</div>
+                    <p class="o-p-num">数量 X {{product.productNum}}</p>
+                  </div>
+                </div>
+              </ion-item>
+              <ion-item class="item">
+                <div class="order-detail">共{{order.amount}}件商品 合计<span class="black-30">{{order.price| currency:"￥"}}</span></div>
+              </ion-item>
+              <ion-item class="item">
+                <div class="item-note">
+                  <button class="button-grey" ng-click="cancelOrder(order.id)" ng-if="order.state != 7">取消订单</button>
+                </div>
+              </ion-item>
+              <div class="divider"></div>
+            </div>
+          </ion-list>
+        </ion-content>
+      </ion-view>
+    </ion-tab>
+    <ion-tab title="待付款">
+      <ion-view>
+        <ion-content class="light-bg" style="margin-bottom: 38px;">
+          <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+          <div class="icon no_order" ng-if="unpayedOrder.length == 0"></div>
+          <ion-list ng-if="unpayedOrder.length != 0">
+            <div class="order-item" ng-repeat="order in unpayedOrder">
+              <ion-item class="item unborder">
+                <div class="item-note font-12 orange-fa">
+                  <span ng-if="order.state == 3 || order.state == 2">{{state.unpayed}}</span>
+                </div>
+              </ion-item>
+              <ion-item class="item order-divider item-thumbnail-left" ng-repeat="product in order.productList" ui-sref="orederdetail({orderId: order.id})">
+                <img ng-src="{{product.image[0]}}">
+                <div class="row">
+                  <div class="col col-center">
+                    <div class="o-p-name">{{product.productName}}</div>
+                  </div>
+                  <div class="col col-offset-10 col-center">
+                    <div class="font-14 black-30">{{product.productSellPrice | currency:"￥"}}</div>
+                    <p class="o-p-num">数量 X {{product.productNum}}</p>
+                  </div>
+                </div>
+              </ion-item>
+              <ion-item class="item">
+                <div class="order-detail">共{{order.amount}}件商品 合计<span class="black-30">{{order.price| currency:"￥"}}</span></div>
+              </ion-item>
+              <ion-item>
+                <div class="item-note">
+                  <button class="button-grey" ng-click="cancelOrder(order.id)" ng-if="order.state != 7">取消订单</button>
+                  <button class="button-orange" ng-click="payway(order.id)" ng-if="order.state == 3">付款</button>
+                </div>
+              </ion-item>
+              <div class="divider"></div>
+
+            </div>
+          </ion-list>
+        </ion-content>
+      </ion-view>
+    </ion-tab>
+    <ion-tab title="待收货">
+      <ion-view>
+        <ion-content class="light-bg" style="margin-bottom: 38px">
+          <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+          <div class="icon no_order" ng-if="unrecivedOrder.length == 0"></div>
+          <ion-list ng-if="unrecivedOrder.length != 0">
+            <div class="order-item" ng-repeat="order in unrecivedOrder">
+              <ion-item class="item unborder">
+                <div class="item-note font-12 orange-fa">
+                  <span ng-if="order.state == 6">{{state.delivered}}</span>
+                </div>
+              </ion-item>
+              <ion-item class="item order-divider item-thumbnail-left" ng-repeat="product in order.productList" ui-sref="orederdetail({orderId: order.id})">
+                <img ng-src="{{product.image[0]}}">
+                <div class="row">
+                  <div class="col col-center">
+                    <div class="o-p-name">{{product.productName}}</div>
+                  </div>
+                  <div class="col col-offset-10 col-center">
+                    <div class="font-14 black-30">{{product.productSellPrice | currency:"￥"}}</div>
+                    <p class="o-p-num">数量 X {{product.productNum}}</p>
+                  </div>
+                </div>
+              </ion-item>
+              <ion-item class="item">
+                <div class="order-detail">共{{order.amount}}件商品 合计<span style="color:#303030">{{order.price| currency:"￥"}}</span></div>
+              </ion-item>
+              <ion-item class="item">
+                <div class="item-note">
+                  <button class="button-grey" ng-click="viewLogistics(order.id)" ng-if="order.state == 6">查看物流</button>
+                  <button class="button-orange" ng-click="confirmOrder(order.id)" ng-if="order.state == 6">确认收货</button>
+                </div>
+              </ion-item>
+              <div class="divider"></div>
+            </div>
+          </ion-list>
+        </ion-content>
+      </ion-view>
+    </ion-tab>
+  </ion-tabs>
+  <ion-content>
+  </ion-content>
+</ion-view>
+

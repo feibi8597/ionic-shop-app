@@ -1,0 +1,29 @@
+<ion-view view-title="{{title}}" cache-view="false">
+  <ion-nav-bar class="bar-light" align-title="center">
+    <ion-nav-buttons side="left">
+      <a ng-click="$ionicGoBack()" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <div class="list padding">
+      <form role="form" id="member_form" name="member_form">
+        <ion-item class="item item-outline">
+          <!--<input type="text" placeholder="名字" name="memberName" ng-model="data.memberName" value="{{member.name}}" required>-->
+          <input type="text" placeholder="名字" name="memberName" ng-model="member.name" required>
+        </ion-item>
+        <ion-item class="item item-outline">
+          <input type="number" placeholder="身份证" name="memberIdentifyID" ng-model="member.identity" ng-pattern="/^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{4}$/" ng-blur="validate('Id', member_form)" required>
+          <!--<input type="number" placeholder="身份证" name="memberIdentifyID" ng-model="data.memberIdentifyID" value="{{member.identify}}" ng-pattern="/^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{4}$/" ng-blur="validate('Id', member_form)" required>-->
+        </ion-item>
+        <ion-item class="item item-outline">
+          <input type="number" placeholder="手机号" name="memberMobile" ng-model="member.mobile" ng-pattern="/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/" ng-blur="validate('phone', member_form)" required>
+          <!--<input type="number" placeholder="手机号" name="memberMobile" ng-model="data.memberMobile" value="{{member.mobile}}" ng-pattern="/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/" ng-blur="validate('phone', member_form)" required>-->
+        </ion-item>
+        <ion-item class="item item-outline">
+          <input type="text" placeholder="角色" readonly style="background: #fff;" name="memberRole" ng-model="member.role" ng-click="openModal()" required>
+        </ion-item>
+        <button class="button button-assertive button-block" ng-click="addMember()" ng-disabled="member_form.$invalid">完成</button>
+      </form>
+    </div>
+  </ion-content>
+</ion-view>

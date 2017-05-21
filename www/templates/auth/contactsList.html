@@ -1,0 +1,30 @@
+<ion-view view-title="门店员工" cache-view="false">
+  <ion-nav-bar class="bar-light" align-title="center">
+    <ion-nav-buttons side="left">
+      <a ng-click="$ionicGoBack()" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <ion-list>
+      <div class="member-item" ng-repeat="member in memberList">
+        <ion-item class="item item-role" type="item-text-wrap" style="border-top: none;">
+          <span class="font-14 grey-8c">{{member.role}}</span>
+          <div class="item-note">
+            <div class="icon icon_edit" ui-sref="addContact({memberId: member.id})"></div>
+            <div class="icon icon_trash" ng-click="delete(member)"></div>
+          </div>
+        </ion-item>
+        <ion-item class="item item-detail" type="item-text-wrap">
+          <div class="font-14 grey-8c">{{member.name}}</div>
+          <div class="font-14 grey-8c">{{member.mobile}}</div>
+        </ion-item>
+        <div class="divider"></div>
+      </div>
+      <ion-item class="item item-remove-animate item-icon-right unborder" ui-sref="addContact({memberId:''})" style="border-color: #f7f7f7;">
+        <div class="font-14 black-03">添加员工信息</div>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
+

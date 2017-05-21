@@ -1,0 +1,53 @@
+<ion-view view-title="经销商资料" cache-view="false">
+  <ion-nav-bar class="bar-light" align-title="center">
+    <ion-nav-buttons side="left">
+      <a ng-click="$ionicGoBack()" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-thumbnail-right" type="item-text-wrap" style="border-top: none;">
+        <!--<img ng-src="{{tenant.tenantIMG}}">-->
+        <img src="img/tenant_avatar.png" style="max-width: 80px;">
+        <div class="font-16 grey-8c" style="line-height: 75px;">头像</div>
+        <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+      </ion-item>
+      <ion-item type="item-text-wrap">
+        <span class="font-16 grey-8c">门店名称</span>
+        <span class="item-note font-12">{{tenant.tenantName}}</span>
+        <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+      </ion-item>
+      <ion-item type="item-text-wrap" >
+        <span class="font-16 grey-8c">省份</span>
+        <span class="item-note font-12">{{province}}</span>
+        <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+      </ion-item>
+      <ion-item type="item-text-wrap">
+         <span class="font-16 grey-8c">城市</span>
+        <span class="item-note font-12">{{city}}</span>
+        <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+      </ion-item>
+      <!--<ion-item type="item-text-wrap">-->
+        <!--街道-->
+        <!--<span class="item-note" style="font-size: 12px;">{{district}}</span>-->
+        <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+      <!--</ion-item>-->
+      <!--<ion-item class="item-icon-right" type="item-text-wrap">-->
+        <!--门店介绍-->
+        <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+      <!--</ion-item>-->
+      <div class="divider"></div>
+      <ion-item class="item-icon-right" type="item-text-wrap" ui-sref="contactsList" style="border-top: none;">
+        <span class="font-16 grey-8c">门店店员</span>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <div class="divider-1"></div>
+      <!--<ion-item class="item-icon-right" type="item-text-wrap" ui-sref="bindMail">-->
+        <!--绑定邮箱-->
+        <!--<div class="item-note">{{}}</div>-->
+        <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+      <!--</ion-item>-->
+    </ion-list>
+  </ion-content>
+</ion-view>
+

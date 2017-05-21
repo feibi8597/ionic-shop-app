@@ -1,0 +1,66 @@
+<ion-view view-title="完善基本信息" cache-view="false">
+  <ion-nav-bar class="bar-light bar-font" align-title="center">
+    <ion-nav-buttons side="left">
+      <a ng-click="$ionicGoBack()" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+      <form role="form" id="complete_form" name="complete_form">
+        <div class="list padding">
+          <label class="item_input">
+            <input type="text" placeholder="门店名称" name="tenantName" ng-model="data.reg.tenantName.value" required>
+          </label>
+          <label class="item_input">
+            <input type="text" placeholder="所在地区" readonly name="tenantArea" ng-model="tenantArea" ng-click="openAreaModal()" required>
+          </label>
+          <label class="item_input">
+            <input type="text" placeholder="请填写详细地址，必填" ng-model="data.reg.tenantAddress.value" name="tenantAddress"  required>
+          </label>
+          <label class="item_input">
+            <input type="tel" placeholder="联系电话" ng-model="data.reg.tenantMobile.value" name="tenantMobile" ng-pattern="/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/" ng-blur="validate('phone', complete_form)" required>
+          </label>
+        </div>
+        <div class="divider"></div>
+        <div class="arrival_section">
+          <div class="header-register">
+            到账时间
+          </div>
+          <div class="row">
+            <div class="col">
+              <ion-checkbox ng-model="data.nextdayArrival" class="checkbox-square checkbox-assertive" ng-click="changeArrival($event)" name="nextdayArrival">
+                <span class="checkbox_description">隔天</span>
+              </ion-checkbox>
+            </div>
+            <div class="col">
+              <ion-checkbox ng-model="data.todayArrival" class="checkbox-square checkbox-assertive" ng-click="changeArrival($event)" name="todayArrival">
+                <span class="checkbox_description">今天</span>
+              </ion-checkbox>
+            </div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="list padding">
+          <div class="header-register">身份证(必填)</div>
+          <!--<div class="photo-wrapper" ng-click="openCamera('front', frontUserphoto)">-->
+         <div class="photo-wrapper" ng-click="takePicture('front')">
+            <div ng-if="!frontUserphoto">添加身份证正面照</div>
+            <img ng-if="frontUserphoto" ng-src="{{frontUserphoto}}">
+          </div>
+          <!--<div class="photo-wrapper" ng-click="openCamera('oppsite', oppsiteUserphoto)">-->
+          <div class="photo-wrapper" ng-click="takePicture('oppsite')">
+            <div ng-if="!oppsiteUserphoto">添加身份证反面照</div>
+            <img ng-if="oppsiteUserphoto" ng-src="{{oppsiteUserphoto}}">
+          </div>
+          <!--<div class="photo-wrapper" ng-click="openCamera('hand', handUserphoto)">-->
+          <div class="photo-wrapper" ng-click="takePicture('hand')">
+            <div ng-if="!handUserphoto">添加手持身份证照</div>
+            <img ng-if="handUserphoto" ng-src="{{handUserphoto}}">
+          </div>
+        </div>
+        <div class="list padding">
+          <button class="button button-block button-assertive button_input" ng-click="next()" ui-sref="completeTenantInfo" ng-disabled="complete_form.$invalid">下一步</button>
+          <!--<button class="button button-block button-assertive button_input" ng-click="next()" ui-sref="completeTenantInfo" ng-disabled="complete_form.$invalid || !handUserphoto || !frontUserphoto || !oppsiteUserphoto ">下一步</button>-->
+        </div>
+      </form>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,37 @@
+<ion-view title="{{title}}" cache-view="false">
+  <ion-nav-bar class="bar-light" align-title="center">
+    <ion-nav-buttons side="left">
+      <a ng-click="$ionicGoBack()" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <div class="list">
+      <form role="form" id="receiver_form" name="receiver_form">
+        <!--<ion-item class="item item-input" style="background-color: #fff; border-top:none; border-radius: 0px;">-->
+          <!--<input type="text" placeholder="收件人" name="receiverName" ng-modal="receiver.data" required>{{receiver}}-->
+        <!--</ion-item>-->
+        <div class="padding">
+          <ion-item class="item item-outline">
+            <input type="text" placeholder="收件人" name="receiverName" ng-model="receiver.name" required>
+          </ion-item>
+          <ion-item class="item item-outline">
+            <input type="number" placeholder="联系电话" name="receiverPhone" ng-model="receiver.phone" ng-pattern="/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/" ng-blur="validate('phone', receiver_form)" required>
+          </ion-item>
+          <ion-item class="item item-outline">
+            <input type="text" placeholder="所在地区" readonly name="receiverArea" ng-model="receiver.area" ng-click="openModal()" style="background: #fff;" required>
+          </ion-item>
+          <label class="item item-outline" style="border-bottom: none !important;">
+            <input type="text" placeholder="请填写详细地址，不少于5个字" ng-model="receiver.address" name="receiverAddress" ng-pattern="/^.{5,10}$/" ng-blur="validate('address', receiver_form)" required>
+          </label>
+        </div>
+        <div class="divider"></div>
+        <ion-toggle toggle-class="toggle-assertive unborder" ng-model="receiver.def">设为默认</ion-toggle>
+        <div class="divider-1"></div>
+        <div class="padding">
+          <button class="button button-assertive button-block button-auth" ng-click="addReceiver()" style="margin-top:25px;" ng-disabled="receiver_form.$invalid">完成</button>
+        </div>
+      </form>
+    </div>
+  </ion-content>
+</ion-view>
+

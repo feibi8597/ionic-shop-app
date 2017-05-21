@@ -1,0 +1,23 @@
+{
+  "name": "myApp",
+  "app_id": "",
+  "proxies": [
+    {
+      "path": "/ECommerce",
+      "proxyUrl": "http://120.77.40.156:8080/ECommerce"
+    },
+    {
+      "path": "/ECommerce",
+      "proxyUrl": "http://117.143.195.130:50002/services"
+    }
+  ],
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
+  ]
+}

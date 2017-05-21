@@ -1,0 +1,69 @@
+<ion-view>
+  <ion-nav-bar class="bar-orange light" align-title="center">
+    <ion-nav-buttons side="left">
+      <a ui-sref="mainMenu" class="button button-icon icon ion-ios-arrow-back light" nav-direction="back"></a>
+    </ion-nav-buttons>
+    <ion-nav-title>
+      <ion-header-bar>
+        <div class="item-input-inset">
+          <label class="item-input-wrapper">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="search" placeholder="搜索" ng-model="searchContent">
+          </label>
+        </div>
+      </ion-header-bar>
+    </ion-nav-title>
+  </ion-nav-bar>
+  <ion-content>
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+    <ion-slide-box show-pager="true" does-continue="true">
+      <ion-slide class="text-pic" ng-repeat="banner in banners">
+        <img ng-src="{{banner.pic}}">
+      </ion-slide>
+    </ion-slide-box>
+    <div class="divider"></div>
+    <div class="product-sec">
+      <div class="w-list-header">新品到货</div>
+      <ion-scroll direction="x" class="col-center margin-t">
+        <div class="row list unpadding">
+          <div class="item unborder col-33 item-shop" ng-repeat="list in newproductList" ui-sref="productdetail({productId: list.id})">
+            <img ng-src="{{list.avatarList[0]}}">
+            <div class="product-header">{{list.name}}</div>
+            <div class="price-header">{{list.sellPrice | currency:"￥" }}</div>
+          </div>
+          <div class="item unborder col-33 websites-list-last" ui-sref="list({cat: 'new'})">
+            <span class="websites-list-all">全部</span>
+          </div>
+        </div>
+      </ion-scroll>
+    </div>
+    <div class="divider"></div>
+      <div class="product-sec">
+        <div class="w-list-header">促销商品</div>
+        <ion-scroll direction="x" class="col-center margin-t">
+          <div class="row list unpadding">
+            <div class="item unborder col-33 item-shop" ng-repeat="list in salesproductList" ui-sref="productdetail({productId: list.id})">
+              <img ng-src="{{list.avatarList[0]}}">
+              <div class="product-header">{{list.name}}</div>
+              <div class="price-header">{{list.sellPrice | currency:"￥" }}</div>
+            </div>
+            <div class="item unborder col-33 websites-list-last" ui-sref="list({cat: 'sales'})"><span class="websites-list-all">全部</span></div>
+          </div>
+        </ion-scroll>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="product-sec">
+      <div class="w-list-header">热卖商品</div>
+      <div class="list">
+        <div class="product-wrapper">
+          <div class="item col-33 unborder item-shop" ng-repeat="list in bestproductList" ui-sref="productdetail({productId: list.id})">
+            <img ng-src="{{list.avatarList[0]}}">
+            <div class="product-header">{{list.name}}</div>
+            <div class="price-header">{{list.sellPrice | currency:"￥" }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

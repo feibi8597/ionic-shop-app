@@ -1,0 +1,59 @@
+<ion-view view-title="商户银行信息" cache-view="false">
+  <ion-nav-bar class="bar-light" align-title="center">
+    <ion-nav-buttons side="left">
+      <a ng-click="$ionicGoBack()" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <form class="" role="form" id="bind_form" name="bind_form">
+      <div class="list padding">
+        <div class="card-type">
+          <div class="header-register">选择账号类型</div>
+          <div class="row unpadding">
+            <div class="col unpadding unborder">
+              <ion-checkbox ng-model="data.private" name="private" class="unborder checkbox-square checkbox-assertive" ng-click="changeType($event)">对私</ion-checkbox>
+            </div>
+            <div class="col unpadding unborder">
+              <ion-checkbox ng-model="data.public" name="public" class="unborder checkbox-square checkbox-assertive" ng-click="changeType($event)">对公</ion-checkbox>
+            </div>
+          </div>
+        </div>
+        <label class="item_input">
+          <input type="text" placeholder="开户人名称" ng-model="data.reg.realName.value" name="realName" required>
+        </label>
+        <label class="item_input">
+          <input type="number" placeholder="银行卡号" ng-model="data.reg.cardNum.value" name="cardNum" ng-pattern=" /^(\d{16}|\d{19})$/" ng-blur="validate('cardNum', bind_form)" required>
+        </label>
+        <label class="item_input">
+          <input type="number" placeholder="身份证号码" ng-model="data.reg.identification.value" name="identification" ng-pattern="/^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{4}$/" ng-blur="validate('Id', bind_form)" required>
+        </label>
+        <label class="item_input">
+          <input type="tel" placeholder="预留手机号" ng-model="data.reg.cardPhone.value" name="cardPhone" ng-pattern="/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/" ng-blur="validate('phone', bind_form)" required>
+        </label>
+      </div>
+      <div class="divider"></div>
+      <div class="list padding">
+        <label class="item_input">
+          <input type="number" placeholder="开户行代码" ng-model="data.reg.bankCode.value" name="bankCode" required>
+        </label>
+        <label class="item_input">
+          <input type="number" placeholder="账户账号" ng-model="data.reg.bankAccountNum.value" name="bankAccountNum" required>
+        </label>
+        <label class="item_input">
+          <input type="text" placeholder="开户银行名称" ng-model="data.reg.bankName.value" name="bankName" required>
+        </label>
+        <label class="item_input">
+          <input type="number" placeholder="开户银行行号" ng-model="data.reg.bankNum.value" name="bankNum" required>
+        </label>
+        <!--<div class="photo-wrapper" ng-click="openCamera('card', cardphoto)">-->
+        <div class="photo-wrapper" ng-click="takePicture('card')">
+          <div ng-if="!cardphoto">银行卡照片</div>
+          <img ng-if="cardphoto" ng-src="{{cardphoto}}">
+        </div>
+      </div>
+      <div class="padding">
+        <button class="button button-block button-assertive button_input" ng-disabled="bind_form.$invalid || !cardphoto" ng-click="confirm()">完成</button>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

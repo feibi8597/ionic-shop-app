@@ -1,0 +1,39 @@
+<ion-view view-title="收款明细" cache-view="false">
+  <ion-nav-bar class="bar-light" align-title="center">
+    <ion-nav-buttons side="left">
+      <a ng-click="$ionicGoBack()" class="button button-icon icon ion-ios-arrow-back light" nav-direction="back"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate unborder" type="item-text-wrap">
+        <span class="font-12 black-30">2015102304848859593</span>
+        <div class="item-note"><span class="font-12 grey-8c">{{20160613 | date : 'yyyy-MM-dd'}}</span></div>
+      </ion-item>
+      <ion-item class="item-divider" type="item-text-wrap">
+        <span class="font-14 grey-8c">实收</span>
+        <div class="item-note"><span class="font-16 orange-fa">{{1000 | currency:"￥"}}</span></div>
+      </ion-item>
+      <ion-item class="" type="item-text-wrap">
+        <span class="font-14 grey-8c">收款方式 支付宝</span>
+        <div class="item-note"><span class="font-12 grey-12">收款人 张艳玲</span></div>
+      </ion-item>
+      <div class="divider"></div>
+      <ion-item class="item-remove-animate unborder" type="item-text-wrap">
+      <span class="font-12 black-30">2015102304848859593</span>
+      <div class="item-note"><span class="font-12 grey-8c">{{20160613 | date : 'yyyy-MM-dd'}}</span></div>
+    </ion-item>
+      <ion-item class="item-divider" type="item-text-wrap">
+        <span class="font-14 grey-8c">实收</span>
+        <div class="item-note"><span class="font-16 orange-fa">{{1000 | currency:"￥"}}</span></div>
+      </ion-item>
+      <ion-item class="" type="item-text-wrap">
+        <span class="font-14 grey-8c">收款方式 支付宝</span>
+        <div class="item-note"><span class="font-12 grey-12">收款人 张艳玲</span></div>
+      </ion-item>
+      <div class="divider-1"></div>
+    </ion-list>
+  </ion-content>
+</ion-view>
+
+

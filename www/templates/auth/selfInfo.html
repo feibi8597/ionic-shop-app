@@ -1,0 +1,33 @@
+<ion-view view-title="个人信息" cache-view="false">
+  <ion-nav-bar class="bar-light" align-title="center">
+    <ion-nav-buttons>
+      <a ng-click="$ionicGoBack()" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-thumbnail-right" type="item-text-wrap" style="border-top:none;">
+        <img ng-src="{{user.avatarUrl || 'img/avatar.png'}}">
+        <div class="grey-8c" style="padding-top:25px;">头像</div>
+      </ion-item>
+      <ion-item class="" type="item-text-wrap">
+         <span class="grey-8c">昵称</span>
+        <span class="item-note font-12">{{ user.mobile}}</span>
+        <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+      </ion-item>
+      <ion-item class="item-icon-right" type="item-text-wrap" ui-sref="bindMail">
+        <span class="grey-8c">绑定邮箱</span>
+        <div class="item-note font-12">{{user.email || '未绑定'}}</div>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <div class="divider-1"></div>
+    </ion-list>
+    <div class="padding">
+      <button class="button button-block button-assertive button-auth" ng-click="logout()" >
+        退出
+      </button>
+    </div>
+
+  </ion-content>
+</ion-view>
+

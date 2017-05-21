@@ -1,0 +1,91 @@
+<ion-view view-title="完善门店信息" cache-view="false">
+  <ion-nav-bar class="bar-light" align-title="center">
+    <ion-nav-buttons side="left">
+      <a ng-click="$ionicGoBack()" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <form role="form" id="complete_license_form" name="complete_license_form">
+      <div class="padding license-sec">
+        <div class="header-register">营业执照(必填)</div>
+        <!--<div class="photo-wrapper" ng-click="openCamera('license', licensephoto)">-->
+        <div class="photo-wrapper" ng-click="takePicture('license')">
+          <div ng-if="!licensephoto">营业执照</div>
+          <img ng-if="licensephoto" ng-src="{{licensephoto}}">
+        </div>
+        <div class="photo-wrapper" ng-repeat="license in licenseList" on-hold="deletePicture(license)" on-tap="takePicture(license)">
+          <img ng-src="{{license.url}}">
+        </div>
+        <a class="plus-button" ng-click="takePicture('more')" ng-if="isLimit">
+          <i class="ion-plus"></i>
+          <span>添加</span>
+        </a>
+      </div>
+      <div class="divider-line"></div>
+      <ion-item class="item-icon-right header-register unborder" type="item-text-wrap" ng-click="openLicenseSec()">
+        <span class="font-14">完善营业执照信息(必填)</span>
+        <i class="icon ion-chevron-right icon-accessory" ng-if="hidden"></i>
+        <i class="icon ion-chevron-up icon-accessory" ng-if="!hidden"></i>
+      </ion-item>
+      <div class="divider"></div>
+      <div class="license-sec" ng-if="!hidden">
+        <div class="list padding">
+          <label class="item_input">
+            <input type="text" placeholder="营业执照注册号" name="tenantLicenseNum" ng-model="data.reg.tenantLicenseNum.value" required>
+          </label>
+          <label class="item_input">
+            <input type="text" placeholder="营业范围" name="tenantScope" ng-model="data.reg.tenantScope.value" required>
+          </label>
+          <div class="padding term-section">
+            <div class="header-register">
+              营业期限
+            </div>
+            <label class="item_input">
+              <input type="text" placeholder="起始日期" name="tenantTermStart" ng-model="startTime" ng-click="openDatePicker($event)" required readonly>
+            </label>
+            <label class="item_input">
+              <input type="text" placeholder="终止日期" name="tenantTermEnd" ng-model="endTime" ng-click="openDatePicker($event)" required readonly>
+            </label>
+          </div>
+          <label class="item_input">
+            <input type="text" placeholder="有效期" name="tenantValidity" ng-model="data.reg.tenantValidity.value" ng-click="openDatePicker($event)"  required readonly>
+          </label>
+          <label class="item_input">
+            <input type="text" placeholder="组织机构代码" name="organizationCode" ng-model="data.reg.organizationCode.value" required>
+          </label>
+          <label class="item_input">
+            <input type="text" placeholder="商户类型" name="tenantType" ng-model="data.reg.tenantType.value" required>
+          </label>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="padding">
+        <div class="header-register">门店信息</div>
+        <!--<div class="photo-wrapper" ng-click="openCamera('door', doorphoto)">-->
+        <div class="photo-wrapper" ng-click="takePicture('door')">
+          <div ng-if="!doorphoto">门头照</div>
+          <img ng-if="doorphoto" ng-src="{{doorphoto}}">
+        </div>
+        <!--<div class="photo-wrapper" ng-click="openCamera('counter', counterphoto)">-->
+        <div class="photo-wrapper" ng-click="takePicture('counter')">
+          <div ng-if="!counterphoto">柜面照</div>
+          <img ng-if="counterphoto" ng-src="{{counterphoto}}">
+        </div>
+        <!--<div class="photo-wrapper" ng-click="openCamera('store', storephoto)">-->
+        <div class="photo-wrapper" ng-click="takePicture('store')">
+          <div ng-if="!storephoto">店内照</div>
+          <img ng-if="storephoto" ng-src="{{storephoto}}">
+        </div>
+        <!--<div class="photo-wrapper" ng-click="openCamera('agreements', agreementsphoto)">-->
+        <div class="photo-wrapper" ng-click="takePicture('agreements')">
+          <div ng-if="!agreementsphoto">租赁合同</div>
+          <img ng-if="agreementsphoto" ng-src="{{agreementsphoto}}">
+        </div>
+      </div>
+      <div class="padding">
+        <button class="button button-block button-assertive button_input" ng-click="next()" ui-sref="bindcard" ng-disabled="complete_license_form.$invalid">下一步</button>
+        <!--<button class="button button-block button-assertive button_input" ng-click="next()" ui-sref="bindcard" ng-disabled="complete_license_form.$invalid || !licensephoto">下一步</button>-->
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

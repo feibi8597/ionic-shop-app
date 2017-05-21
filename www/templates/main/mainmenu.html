@@ -1,0 +1,116 @@
+<ion-view view-title="炸弹二锅头" cache-view="false">
+  <ion-nav-bar class="bar-orange light" align-title="center">
+    <ion-nav-buttons side="right">
+      <button class="button button-clear" ui-sref="selfInfo">
+        <span class="icon icon_person"></span>
+      </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+    <div class="row orange-ee-f9-bg light mm-banner">
+        <div class="col-33 text-center" ui-sref="scanQRCode">
+          <div class="icon icon_scan"></div>
+          <div class="banner_title">
+              扫一扫
+          </div>
+        </div>
+        <div class="col-33 text-center" ui-sref="tab.websites">
+          <div class="icon icon_shop"></div>
+          <div class="banner_title">
+              商城
+          </div>
+        </div>
+        <div class="col-33 text-center" ui-sref="property">
+          <div class="icon icon_purple"></div>
+          <div class="banner_title">
+              钱包
+          </div>
+        </div>
+    </div>
+    <div class="row mm-order-sec">
+      <div class="col unpadding" ui-sref="tab.order">
+        <div class="mm-icon-bg orange-ee-f9-bg">
+          <div class="icon icon_unpayed"></div>
+        </div>
+        <div class="black-03 mm-order-title">待付款</div>
+      </div>
+      <div class="col unpadding" ui-sref="tab.order">
+        <div class="mm-icon-bg orange-ee-f9-bg">
+          <div class="icon icon_undelivered"></div>
+        </div>
+        <div class="black-03 mm-order-title">待发货</div>
+      </div>
+      <div class="col unpadding" ui-sref="tab.order">
+        <div class="mm-icon-bg orange-ee-f9-bg">
+          <div class="icon icon_unreceived"></div>
+        </div>
+        <div class="black-03 mm-order-title">待收货</div>
+      </div>
+      <div class="col unpadding" ui-sref="tab.order">
+        <div class="mm-icon-bg orange-ee-f9-bg">
+          <div class="icon icon_all_order"></div>
+        </div>
+        <div class="black-03 mm-order-title">全部</div>
+      </div>
+    </div>
+    <ion-list>
+      <div class="logistics-wrapper">
+        <div id="timeline-01">
+          <ul class="timeline">
+            <li ng-repeat="logistics in logisticsList">
+              <div class="timeline-thumb">
+                <span class="timeline-header">最新物流<br>{{logistics.time}}</span>
+                <i class="ion-record grey-f9"></i>
+              </div>
+              <div class="timeline-item">
+                <ion-item class="item item-remove-animate item-thumbnail-left" type="item-text-wrap" ng-click="openLogistics(logistics)">
+                  <img ng-src="{{logistics.img}}">
+                  <div>
+                    <p class="item-word-break grey-4a">{{logistics.add}}</p>
+                  </div>
+                </ion-item>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div id="timeline-02">
+          <ul class="timeline">
+            <li ng-repeat="logistics in logisticsList">
+              <div class="timeline-thumb">
+                <span class="timeline-header">最新物流<br>{{logistics.time}}</span>
+                <i class="ion-record grey-f9"></i>
+              </div>
+              <div class="timeline-item">
+                <ion-item class="item item-remove-animate item-thumbnail-left" type="item-text-wrap" ng-click="openLogistics(logistics)">
+                  <img ng-src="{{logistics.img}}">
+                  <div>
+                    <p class="item-word-break grey-4a">{{logistics.add}}</p>
+                  </div>
+                </ion-item>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div>
+        <ion-slide-box does-continue="true">
+          <ion-slide class="text-pic" ng-repeat="banner in banners">
+            <img ng-src="{{banner}}">
+          </ion-slide>
+        </ion-slide-box>
+      </div>
+      <div class="divider"></div>
+      <div class="list product-sec">
+        <div class="grey-4a text-center">为你优选</div>
+        <div class="product-wrapper">
+          <div class="item col-33 unborder item-shop" ng-repeat="product in productList_hot" ui-sref="productdetail({productId: product.id})">
+            <img ng-src="{{product.avatarList[0]}}">
+            <div class="product-header">{{product.name}}</div>
+          </div>
+        </div>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

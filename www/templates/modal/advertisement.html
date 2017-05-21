@@ -1,0 +1,9 @@
+<ion-modal-view style="height: {{win_H}}px;bottom: 0;position: fixed;" class="scale-in">
+  <ion-slide-box delegate-handle="modal_slide" style="height: {{win_H}}px;">
+    <ion-slide ng-repeat="img in advertisement" ng-click="close_modal()">
+      <ion-scroll overflow-scroll='false' zooming="true" direction="xy" min-zoom="1" max-zoom="4" style="height: {{win_H}}px;width:{{win_W}}px; vertical-align: middle;">
+        <div style="padding-top: 80px;"><img ng-src="{{img}}"></div>
+      </ion-scroll>
+    </ion-slide>
+  </ion-slide-box>
+</ion-modal-view>

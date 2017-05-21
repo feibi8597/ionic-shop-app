@@ -1,0 +1,14 @@
+
+<ion-modal-view style="height: {{win_H}}px;bottom: 0;position: fixed;" class="scale-in black-bg">
+  <ion-header-bar class="bar bar-header bar-dark">
+    <div class="buttons">
+      <a ng-click="closeModal('photo')" class="button button-icon icon ion-ios-arrow-back"></a>
+    </div>
+    <h1 class="title"></h1>
+    <div class="buttons">
+      <button class="button button-icon" ng-click="openMore()"><i class="ion-more"></i></button>
+    </div>
+  </ion-header-bar>
+  <div style="line-height: {{win_H}}px"><img ng-src="{{img}}"></div>
+
+</ion-modal-view>

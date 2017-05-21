@@ -1,0 +1,17 @@
+<ion-view view-title="绑定邮箱" cache-view="false">
+  <ion-nav-bar class="bar-light" align-title="center">
+    <ion-nav-buttons side="left">
+      <a ng-click="$ionicGoBack()" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <div class="list padding">
+      <form role="form" id="bindMail_form" name="bindMail_form">
+        <ion-item class="item item-outline">
+          <input type="email" placeholder="邮箱" name="userMail" ng-model="data.userMail" ng-pattern="/\S+@\S+\.\S+/" ng-blur="validate('mail', bindMail_form)" required>
+        </ion-item>
+          <button class="button button-assertive button-block button-auth" ng-click="bindMail()" ng-disabled="bindMail_form.$invalid">完成</button>
+      </form>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,21 @@
+<div class="role-backdrop">
+  <ion-modal-view class="rolepicker-bg" style="background: rgba(0,0,0,.5);">
+    <div class="role-bgclose" ng-click="closeModal()"></div>
+    <div class="role-picker">
+      <ion-header-bar class="bar bar-header bar-light" align-title="center">
+        <h1 class="title">选择角色</h1>
+        <div class="buttons">
+          <button class="button button-icon" ng-click="closeModal()"><i class="ion-close"></i></button>
+        </div>
+      </ion-header-bar>
+      <ion-content class="light-bg">
+        <div class="list">
+          <ion-checkbox ng-model="newMember.sales" class="item-checkbox-right" style="border:none" ng-change="newMember.finance = false">销售</ion-checkbox>
+          <ion-checkbox ng-model="newMember.finance" class="item-checkbox-right" style="border:none" ng-change="newMember.sales = false">财务</ion-checkbox>
+          <div class="padding"><button class="button button-full button-assertive" ng-click="selectRole(newMember)" style="margin-top: 25px;">确定</button></div>
+        </div>
+      </ion-content>
+    </div>
+  </ion-modal-view>
+</div>
+

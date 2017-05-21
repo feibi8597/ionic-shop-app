@@ -1,0 +1,66 @@
+<ion-view title="我的">
+  <ion-nav-bar class="bar-light" align-title="center">
+  </ion-nav-bar>
+  <ion-content>
+    <ion-list class="account-wrapper">
+      <ion-item class="item-remove-animate item-thumbnail-left item-icon-right" type="item-text-wrap" ui-sref="detail">
+        <img src="img/tenant_avatar.png">
+        <div class="tenant-name">{{tenant.tenantName}}</div>
+        <div class="tenant-level">
+          <span ng-if="tenant.tenantLevel == 1">{{tenantLevel.first}}</span>
+          <span ng-if="tenant.tenantLevel == 2">{{tenantLevel.second}}</span>
+          <span ng-if="tenant.tenantLevel == 3">{{tenantLevel.third}}</span>
+        </div>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <div class="row text-center">
+        <div class="col">
+          <div class="black-30 font-16">1000</div>
+          <div class="grey-8c">余额</div>
+        </div>
+        <div class="col">
+          <div class="black-30 font-16">330</div>
+          <div class="grey-8c">收款</div>
+        </div>
+        <div class="col">
+          <div class="black-30 font-16">58</div>
+          <div class="grey-8c">积分</div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <ion-item class="item-icon-right" type="item-text-wrap" ui-sref="mall">
+        <span class="grey-8c font-16">积分商城</span>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <div class="divider"></div>
+      <ion-item class="item-icon-right" type="item-text-wrap" ui-sref="tab.order">
+        <span class="grey-8c font-16">我的订单</span>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <div class="divider"></div>
+      <ion-item class="item-icon-right" type="item-text-wrap" ui-sref="property">
+        <span class="grey-8c font-16">我的钱包</span>
+        <span class="item-note font-12"><span>余额</span> <span style="color:#fa3f11;">{{1000 | currency:"￥"}}</span></span>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <ion-item class="item-icon-right" type="item-text-wrap" ui-sref="card">
+        <span class="grey-8c font-16">我的卡</span>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <!--<ion-item class="item-icon-right" type="item-text-wrap" ui-sref="coupons">-->
+        <!--我的优惠券-->
+        <!--<span class="item-note">{{10}}张</span>-->
+        <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+      <!--</ion-item>-->
+      <div class="divider"></div>
+      <ion-item class="item-icon-right" type="item-text-wrap" ui-sref="addressList">
+        <span class="grey-8c font-16">收货地址</span>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <ion-item class="item-icon-right" type="item-text-wrap" ui-sref="setting">
+        <span class="grey-8c font-16">设置</span>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

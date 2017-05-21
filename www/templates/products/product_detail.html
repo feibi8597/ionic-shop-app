@@ -1,0 +1,45 @@
+<ion-view view-title="" hide-nav-bar="true">
+  <ion-content delegate-handle="product">
+    <ion-slide-box show-pager="true" does-continue="true">
+      <ion-slide ng-repeat="img in product.image track by $index" ng-click="open_modal($index)">
+        <img src="{{img}}" style="width: {{win_W}}px;">
+      </ion-slide>
+    </ion-slide-box>
+    <div class="product-title">
+      <div class="product-name">{{product.name}}</div>
+      <div class="product-price" ng-if="!type">{{product.sellPrice | currency:"￥" }}</div>
+      <div class="product-price" ng-if="type">{{product.sellPrice}} 积分</div>
+    </div>
+    <div class="divider-line"></div>
+    <div class="product-description">
+      <div class="product-tab-header">
+        商品详情
+      </div>
+      <div class="product-tab-content" id="description">
+        {{product.description}}
+      </div>
+    </div>
+    <ion-infinite-scroll
+      ng-if="moreDataCanBeLoaded()"
+      on-infinite="loadMore()"
+      distance="1%">
+    </ion-infinite-scroll>
+  </ion-content>
+  <ion-header-bar align-title="center" no-tap-scroll='true' translucent-bar="product" translucent-color-opacity="0.01" translucent-color="rgb(255, 255, 255)" translucent-scroll-maxtop="88">
+    <div>
+      <button class="button button-icon icon ion-ios-arrow-back product-blackbg" nav-direction="back" ng-click="$ionicGoBack()"></button>
+    </div>
+    <div style="position: absolute;right: 5px;">
+      <button class="button button-icon icon ion-ios-cart-outline product-blackbg" ui-sref="tab.chats"><span class="badge badge-assertive" ng-if="productInCart.length > 0">{{productInCart.length}}</span></button>
+    </div>
+  </ion-header-bar>
+  <ion-footer-bar class="unpadding">
+    <div class="col-50 dark-bg light p-detail-tag" ng-click="addToCart(product)" style="text-align:center;padding:12px;">
+      加入购物车
+    </div>
+    <div class="col-50 assertive-bg light p-detail-tag" ng-click="confirmOrder(product)" style="text-align:center;padding:12px;">
+      立即购买
+    </div>
+  </ion-footer-bar>
+</ion-view>
+

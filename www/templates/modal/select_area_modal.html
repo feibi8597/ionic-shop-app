@@ -1,0 +1,40 @@
+<div class="role-backdrop">
+  <ion-modal-view  class="rolepicker-bg" style="background: rgba(0,0,0,.5);">
+    <div class="role-bgclose" ng-click="closeModal('city')" ></div>
+    <div class="role-picker ">
+      <ion-header-bar class="bar bar-header bar-light" align-title="center">
+        <h1 class="title">所在地区</h1>
+        <div class="buttons">
+          <button class="button button-icon" ng-click="closeModal('city')"><i class="ion-close"></i></button>
+        </div>
+      </ion-header-bar>
+      <div class="city-picker-inner has-header">
+        <div class="row">
+          <ion-tabs class="tabs-striped tabs-top">
+            <ion-tab title="{{provinceSelected.name || '请选择'}}">
+              <ion-view>
+                <ion-content class="light-bg">
+                  <ion-item ng-repeat="province in provinceList" class="text-left" ng-click="selectArea(province, 'province')">{{province.name}}</ion-item>
+                </ion-content>
+              </ion-view>
+            </ion-tab>
+            <ion-tab ng-if="citySelected.name" title="{{citySelected.name || ''}}" >
+              <ion-view>
+                <ion-content class="light-bg">
+                  <ion-item ng-repeat="city in cityList" ng-click="selectArea(city, 'city')">{{city.name}}</ion-item>
+                </ion-content>
+              </ion-view>
+            </ion-tab>
+            <ion-tab ng-if="districtSelected.name" title="{{districtSelected.name || ''}}">
+              <ion-view>
+                <ion-content class="light-bg">
+                  <ion-item ng-repeat="district in districtList" ng-click="selectArea(district, 'district')">{{district.name}}</ion-item>
+                </ion-content>
+              </ion-view>
+            </ion-tab>
+          </ion-tabs>
+        </div>
+      </div>
+    </div>
+  </ion-modal-view>
+</div>

@@ -1,0 +1,39 @@
+<ion-view view-title="收货地址" cache-view="false">
+  <ion-nav-bar class="bar-light" align-title="center">
+    <ion-nav-buttons side="left">
+      <a ng-click="$ionicGoBack()" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <ion-list>
+      <div class="receiver-item" ng-repeat="receiver in receiverList">
+        <ion-item  class="receiver-detail">
+          <div class="row font-14">
+            <div class="col unpadding text-left"><span>{{receiver.name}}</span></div>
+            <div class="col-offset-33 col unpadding font-14">{{receiver.phone}}</div>
+          </div>
+          <div class="row font-14">
+            {{receiver.address}}
+          </div>
+        </ion-item>
+        <div class="row receiver-option unpadding">
+          <div class="col-60 col-center">
+            <ion-checkbox class="checkbox-assertive item-icon-left assertive unborder" ng-model="receiver.def" ng-change="changeDefault(receiver)">
+              <span class="assertive font-12">默认收货地址</span>
+            </ion-checkbox>
+          </div>
+          <div class="col-offset-10 col-center">
+            <button class="button-clear" ui-sref="addAddress({receiverId: receiver.id})"><span class="grey-8c">编辑</span></button>
+            <button class="button-clear" ng-click="deleteReceiver(receiver.id)"><span class="grey-8c">删除</span></button>
+          </div>
+        </div>
+        <div class="divider"></div>
+      </div>
+      <ion-item class="item-icon-right" ui-sref="addAddress({receiverId: ''})" style="border-top:none;">
+          <span class="font-14 black-30">添加收货地址</span>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <div class="divider-1"></div>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,18 @@
+<div class="role-backdrop">
+  <ion-modal-view  class="rolepicker-bg">
+    <div class="role-bgclose" ng-click="closeModal('action')" ></div>
+    <div class="role-picker" style="height: initial;">
+      <div class="city-picker-inner has-header">
+        <div class="action-item text-center">
+          <a ng-click="openCamera(type, 0)">拍照</a>
+        </div>
+        <div class="action-item text-center" ng-if="type.photo == img ? true : false;">
+          <a ng-click="deletePhoto(img)">删除</a>
+        </div>
+        <div class="action-item text-center">
+          <a ng-click="closeModal('action')">取消</a>
+        </div>
+      </div>
+    </div>
+  </ion-modal-view>
+</div>

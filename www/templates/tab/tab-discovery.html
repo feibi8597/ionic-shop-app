@@ -1,0 +1,23 @@
+<ion-view title="发现">
+  <ion-nav-bar class="bar-light" align-title="center">
+    <ion-nav-buttons side="right">
+      <button class="button button-clear"><i class="ion-search"></i></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+    <div class="content">
+      <div class="list">
+        <div class="discovery product-wrapper">
+          <div class="col-50" ng-repeat="list in productList" ui-sref="productdetail({productId: list.id})">
+            <div class="item item-discovery">
+              <img ng-src="{{list.avatarList[0]}}">
+              <div class="product-header discovery-title">{{list.name}}</div>
+              <div class="price-header">{{list.sellPrice | currency:"￥"}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

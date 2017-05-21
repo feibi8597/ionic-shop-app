@@ -1,0 +1,39 @@
+<ion-view view-title="我的钱包" cache-view="false">
+  <ion-nav-bar class="bar-orange light" align-title="center">
+    <ion-nav-buttons side="left">
+      <a ng-click="$ionicGoBack()" class="button button-icon icon ion-ios-arrow-back light" nav-direction="back"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <div class="row orange-ee-f9-bg light mm-banner">
+      <div class="col text-center">
+        <div class="property-num">{{1000 | currency:"￥"}}</div>
+        <div class="property-title">
+          余额
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <ion-list>
+      <ion-item class="item item-remove-animate item-icon-right" type="item-text-wrap" ui-sref="propertyDetail">
+        <span class="font-16 grey-8c">我的收款</span>
+        <div class="item-note orange-fa font-12">{{1000 | currency:"￥"}}</div>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <ion-item class="item item-remove-animate item-icon-right" type="item-text-wrap" ui-sref="propertyDetail">
+        <span class="font-16 grey-8c">已提现</span>
+        <div class="item-note orange-fa font-12">{{1000 | currency:"￥"}}</div>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <ion-item class="item item-remove-animate item-icon-right" type="item-text-wrap" ui-sref="propertyDetail">
+        <span class="font-16 grey-8c">已付金额</span>
+        <div class="item-note orange-fa font-12">{{1000 | currency:"￥"}}</div>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <div class="divider-1"></div>
+    </ion-list>
+    <div class="padding">
+      <button class="button button-assertive button-block">我要提现</button>
+    </div>
+  </ion-content>
+</ion-view>

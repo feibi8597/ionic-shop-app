@@ -1,0 +1,14 @@
+.bar-orange {
+  background-image: linear-gradient(-135deg, #ee704b 0%, #f93f11 100%) !important;
+}
+.platform-android {
+  .bar {
+    .title {
+      font-size: 17px !important;
+    }
+  }
+}
+.bar-header.has-tabs-top {
+  border-bottom-width: 1px;
+}
+

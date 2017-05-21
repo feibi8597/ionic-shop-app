@@ -1,0 +1,56 @@
+<ion-view view-title="购物车" cache-view="false">
+  <ion-nav-bar class="bar-light" align-title="center">
+  </ion-nav-bar>
+  <ion-content>
+    <ion-list class="unpadding">
+      <!--<div class="row unpadding" style="">-->
+        <!--<ion-checkbox class="col-67" style="border:none;" ng-click="selectedProductAll()" ng-model="selectedAll">{{selectedAll}}-->
+          <!--<div class="row unpadding">-->
+            <!--<div class="col-20"><span style="font-size: 12px;">全选</span></div>-->
+            <!--<div class="col-70 col-offset-10" ><span style="font-size: 12px;">合计</span> <span style="font-size: 16px">{{productSum | currency:"￥"}}</span></div>-->
+          <!--</div>-->
+        <!--</ion-checkbox>-->
+        <!--<div class="col-33" style="border:none;">-->
+          <!--<div class="row unpadding">-->
+            <!--<div class="col col-center" style="padding: 16px 0;"><span style="font-size: 10px;">不含运费</span></div>-->
+            <!--<div class="col assertive-bg light" style="padding: 16px 0;"><span style="font-size: 14px;" ng-click="settleAccounts()">结算 {{productSelectedNum}}</span></div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <div ng-if="productsInCart.length == 0" class="icon no_products">
+      </div>
+      <div ng-repeat="product in productsInCart track by $index" ng-init="product.selected = false">
+        <div class="row unpadding">
+          <ion-checkbox class="col checkbox-assertive unborder" ng-model="product.selected" ng-click="productSelected(product)"></ion-checkbox>
+          <div class="col-55 col-center" ui-sref="productdetail({productId: product.id})">
+            <ion-item class="item item-thumbnail-left unborder">
+              <img ng-src="{{product.image[0]}}">
+              <div class="product-header">{{product.name}}</div>
+              <div class="price-header">{{product.sellPrice | currency: '￥'}}</div>
+              <div class="inventory">库存：{{product.stock}}</div>
+            </ion-item>
+          </div>
+          <div class="col-30 col-center text-center padding">
+            <button class="button-clear block margin-center" style="margin-bottom: 15px;" ng-click="deleteProduct(product)"><span class="dark">删除</span></button>
+            <div class="p-num-area">
+              <button class="button-icon p-num-minus" ng-click="minus(product)"><i class="ion-minus"></i></button>
+              <input type="number" value="{{product.num}}" class="p-num-input">
+              <button class="button-icon p-num-plus" ng-click="plus(product)"><i class="ion-plus"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="divider-1"></div>
+      </div>
+    </ion-list>
+  </ion-content>
+  <ion-footer-bar class="row unpadding">
+    <ion-checkbox ng-click="selectedProductAll()" ng-model="selectedAll" class="col checkbox-assertive"><span class="checkAll">全选</span></ion-checkbox>
+    <div class="col-33 padding-3">
+      <div class="total">合计 <span class="price">{{productSum | currency:"￥"}}</span></div>
+      <div class="no-freight">不含运费</div>
+    </div>
+    <div class="col-25 assertive-bg light">
+      <div class="settle-tag" ng-click="settleAccounts()">结算 ({{productSelectedNum}})</div>
+    </div>
+  </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,73 @@
+<ion-view view-title="订单详情" cache-view="false">
+  <ion-nav-bar class="bar-light" align-title="center">
+    <ion-nav-buttons side="left">
+      <a ng-click="return()" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate order-header">
+        <div class="order-num">订单编号：{{order.orderId}}</div>
+        <div class="item-note order-state">
+          <span ng-if="order.state == 1">{{state.canceled}}</span>
+          <span ng-if="order.state == 3 || order.state == 2">{{state.unpayed}}</span>
+          <span ng-if="order.state == 5 || order.state == 4">{{state.payed}}</span>
+          <span ng-if="order.state == 6">{{state.delivered}}</span>
+          <span ng-if="order.state == 7">{{state.succeed}}</span>
+        </div>
+      </ion-item>
+      <ion-item class="item-remove-animate item-thumbnail-left order-pro" type="item-text-wrap" ng-repeat="product in order.productList" ui-sref="productdetail({productId: product.productId})">
+        <img ng-src="{{product.image[0]}}">
+        <div class="row unpadding order-pro-des">
+          <div class="col col-center">
+            <div class="pro-name">{{product.productName}}</div>
+            <div class="pro-stock">{{product.stock}}</div>
+          </div>
+          <div class="col col-offset-10">
+            <div class="pro-price">{{product.productSellPrice | currency:"￥"}}</div>
+            <div class="pro-num">数量 X {{product.productNum}}</div>
+          </div>
+        </div>
+      </ion-item>
+      <div class="divider"></div>
+      <ion-item class="unborder" type="item-text-wrap">
+        <div class="font-16 grey-8c">收件人</div>
+        <div class="font-12 grey-8c">{{order.recipient.name}} {{order.recipient.mobile}}</div>
+        <div class="font-12 grey-8c">{{order.recipient.area}} {{order.recipient.address}}</div>
+      </ion-item>
+      <ion-item class="item" type="item-text-wrap" ng-click="show()">
+          <span class="font-16 grey-8c">配送方式</span>
+        <span class="item-note grey-8c">圆通快递</span>
+      </ion-item>
+      <ion-item class="item" type="item-text-wrap">
+        <span class="font-16 grey-8c">支付方式</span>
+        <span class="item-note">支付宝</span>
+      </ion-item>
+      <div class="divider"></div>
+      <ion-item class="item unborder" type="item-text-wrap">
+        <div class="row unpadding">
+          <div class="col font-16 grey-8c unpadding">商品金额</div>
+          <div class="col-offset-50 col orange-fa unpadding">{{order.price | currency:'￥'}}</div>
+        </div>
+        <!--<div class="row">-->
+          <!--<div class="col">订单促销</div>-->
+          <!--<div class="col-offset-50 col">-{{167 | currency:'￥'}}</div>-->
+        <!--</div>-->
+        <!--<div class="row">-->
+          <!--<div class="col">优惠券*1</div>-->
+          <!--<div class="col-offset-50 col">-{{167 | currency:'￥'}}</div>-->
+        <!--</div>-->
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer-bar class="unpadding" style="line-height: 44px">
+    <div class="col unpadding text-left grey-8c" style="padding-left: 16px !important;">
+      积分+15
+    </div>
+    <div class="col col-offset-10 unpadding">
+      <span class="black-30">实付金额</span> <span class="orange-fa">{{order.price | currency:'￥'}}</span>
+    </div>
+  </ion-footer-bar>
+</ion-view>
+
+

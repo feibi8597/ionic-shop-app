@@ -1,0 +1,42 @@
+<div class="role-backdrop">
+  <ion-modal-view class="rolepicker-bg" style="background: rgba(0,0,0,.5);">
+    <div class="role-bgclose" ng-click="closeModal()"></div>
+    <div class="role-picker" style="height: 420px">
+      <ion-header-bar class="bar bar-header bar-light" align-title="center">
+        <ion-nav-buttons side="left" ng-if="second">
+          <a class="button button-icon icon ion-ios-arrow-back" ng-click="return()"></a>
+        </ion-nav-buttons>
+        <h1 class="title"><span ng-if="first">付款方式</span><span ng-if="second">定金支付</span></h1>
+        <div class="buttons">
+          <button class="button button-icon" ng-click="closeModal()"><i class="ion-close"></i></button>
+        </div>
+      </ion-header-bar>
+      <ion-content class="light-bg">
+        <div class="list" ng-if="first">
+          <ion-checkbox ng-model="payway.weixin" class="item-icon-left item-checkbox-right" style="border:none" ng-change="payway.alipay = false; payway.COD = false; payway.deposit = false">
+            <span class="icon icon_wechat"></span>
+            <span style="margin-left: 30px;">微信</span>
+          </ion-checkbox>
+          <ion-checkbox ng-model="payway.alipay" class="item-icon-left item-checkbox-right" style="border:none" ng-change="payway.weixin = false; payway.COD = false; payway.deposit = false">
+            <span class="icon icon_alipay"></span>
+            <span style="margin-left: 30px;">支付宝</span>
+          </ion-checkbox>
+          <ion-checkbox ng-model="payway.COD" class="item-icon-left item-checkbox-right" style="border:none" ng-change="payway.alipay = false; payway.weixin = false; payway.deposit = false">
+            <span class="icon icon_COD"></span>
+            <span style="margin-left: 30px;">货到付款</span>
+          </ion-checkbox>
+          <ion-checkbox ng-model="payway.deposit" class="item-icon-left item-checkbox-right" style="border:none" ng-change="payway.alipay = false; payway.COD = false; payway.weixin = false">
+            <span class="icon icon_COD"></span>
+            <span style="margin-left: 30px;">定金支付</span>
+          </ion-checkbox>
+          <div class="padding"><button class="button button-full button-assertive" ng-click="checkPayway(payway)" style="margin-top: 25px;" ng-disabled="!payway.alipay && !payway.weixin && !payway.COD && !payway.deposit">确定</button></div>
+        </div>
+        <div class="" ng-if="second" style="font-size: 24px; text-align: center;margin: 35px auto;">
+          {{deposit | currency:'￥'}}
+        </div>
+        <div class="padding" ng-if="second"><button class="button button-full button-assertive" ng-click="confirmDeposit()" style="margin-top: 25px;">确定</button></div>
+      </ion-content>
+    </div>
+  </ion-modal-view>
+</div>
+

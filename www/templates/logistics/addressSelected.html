@@ -1,0 +1,26 @@
+<ion-view view-title="选择收货地址" cache-view="false">
+  <ion-nav-bar class="bar-light bar-font" align-title="center">
+    <ion-nav-buttons side="left">
+      <a ng-click="$ionicGoBack()" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></a>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <button class="button button-clear dark" ui-sref="addressList">管理</button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <ion-list>
+      <div class="receiver-item" ng-repeat="receiver in receiverList" ng-click="selectReceiver(receiver)">
+        <ion-item style="margin:0;border-left: 0;border-right:0;">
+          <div class="row">
+            <div class="col"><span class="text-left">{{receiver.name}}</span></div>
+            <div class="col-offset-33 col">{{receiver.phone}}</div>
+          </div>
+          <div class="row">
+            <span ng-if="receiver.def">[默认地址]</span>
+            {{receiver.address}}
+          </div>
+        </ion-item>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>
